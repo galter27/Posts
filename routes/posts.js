@@ -12,4 +12,6 @@ router.post('/', postConctoller.createNewPost);
 
 router.delete('/:id', postConctoller.deletePost);
 
+router.put('/:id', postConctoller.updatePost);
+
 module.exports = router;

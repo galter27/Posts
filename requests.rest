@@ -1,0 +1,22 @@
+#################### Posts Api ####################
+###
+GET http://localhost:5000
+
+###
+GET http://localhost:5000/posts
+
+###
+GET http://localhost:5000/posts?sender=Gabi
+
+###
+POST http://localhost:5000/posts
+Content-Type: application/json
+
+{
+    "sender" : "Gabi",
+    "postId": 1, 
+    "title" : "My First Post",
+    "content" : "Hello World, This is My First Post",
+}
+
+###################################################

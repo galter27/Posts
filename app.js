@@ -12,7 +12,7 @@ mongodbConnection.on("error", (error) => console.error(error));
 mongodbConnection.once("open", () => console.log("Successfully Connected to Database"));
 
 // Require Routes
-// const postRoutes = require('./routes/posts');
+const postRoutes = require('./routes/posts');
 
 
 // App configuration
