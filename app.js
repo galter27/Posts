@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
     res.send('Authors: Gabi Matatov 322404088 & Gal Ternovski')
 })
 
-//app.use("/posts", postRoutes);
+app.use("/posts", postRoutes);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
