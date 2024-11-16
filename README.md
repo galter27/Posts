@@ -2,7 +2,7 @@
 API Calls presented in `requests.rest` file 
 
 To run app:
-bash ```
+bash```
 npm i
 npm run dev
 ```
