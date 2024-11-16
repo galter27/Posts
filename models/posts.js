@@ -1,0 +1,22 @@
+const mongoose = require("mongoose");
+
+const postSchema = new mongoose.Schema({
+    sender: {
+        type: String, 
+        required: true
+    },
+    title: {
+        type: String,
+        required: true,
+    },
+    content: String,
+    postId: {
+        type: Number,
+        required: true,
+    },
+});
+
+
+const Post = mongoose.model("Posts", postSchema);
+
+module.exports = Post;
