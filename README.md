@@ -7,6 +7,7 @@ This is a simple application for managing posts via an API. The API endpoints ar
 ## Prerequisites
 
 Make sure you have the following installed on your machine:
+- Local running MongoDB server
 - [Node.js](https://nodejs.org/) (v23.1.0 or higher)
 - [npm](https://www.npmjs.com/)
 - Secret .env file 
