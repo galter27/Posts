@@ -1,4 +1,5 @@
 const Comment = require('../models/comments');
+const Post = require('../models/posts');
 
 // Get all comments
 const getAllComments = async (req, res) => {
@@ -30,17 +31,28 @@ const getCommentsByPostId = async (req, res) => {
 // Create new comment
 const createNewComment = async (req, res) => {
     const { postId, sender, content } = req.body;
+
     try {
+        // Check if the post with the given postId exists
+        const post = await Post.findOne({ postId });
+
+        if (!post) {
+            return res.status(404).send(`Post with postId ${postId} not found.`);
+        }
+
         const latestComment = await Comment.findOne().sort({ commentId: -1 });
         const nextCommentId = latestComment ? latestComment.commentId + 1 : 1;
-        
+
+        // Create the new comment
         const newComment = new Comment({ postId, sender, content, commentId: nextCommentId });
         await newComment.save();
+        
         res.status(201).send(newComment);
     } catch (error) {
         res.status(400).send(error.message);
     }
 };
+
 
 // Update a comment
 const updateComment = async (req, res) => {
