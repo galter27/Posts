@@ -6,12 +6,12 @@ const postConctoller = require('../controllers/posts');
 
 router.get('/', postConctoller.getAllPosts);
 
-router.get('/:id', postConctoller.getPostByid);
+router.get('/:postId', postConctoller.getPostByid);
 
 router.post('/', postConctoller.createNewPost);
 
-router.delete('/:id', postConctoller.deletePost);
+router.delete('/:postId', postConctoller.deletePost);
 
-router.put('/:id', postConctoller.updatePost);
+router.put('/:postId', postConctoller.updatePost);
 
 module.exports = router;
