@@ -32,7 +32,7 @@ const createNewPost = async (req, res) => {
 };
 
 const deletePost = async (req, res) => {
-    const postId = req.params.id;
+    const postId = req.params.postId;
     try {
         const result = await Post.deleteOne({ postId: postId });
         if (result.deletedCount === 0) {
@@ -45,7 +45,7 @@ const deletePost = async (req, res) => {
 };
 
 const getPostByid = async (req, res) => {
-    const postId = req.params.id;
+    const postId = req.params.postId;
     try {
         const postById = await Post.findById(postId);
         res.status(200).send(postById);
@@ -55,7 +55,7 @@ const getPostByid = async (req, res) => {
 };
 
 const updatePost = async (req, res) => {
-    const postId = req.params.id;
+    const postId = req.params.postId;
     const newContent = req.body.content;
 
     try {

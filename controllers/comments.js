@@ -66,7 +66,7 @@ const updateComment = async (req, res) => {
 
 // Delete a comment
 const deleteComment = async (req, res) => {
-    const commentId = req.params.id;
+    const commentId = req.params.commentId;
     try {
         const result = await Comment.deleteOne({ commentId });
         if (result.deletedCount === 0) {
