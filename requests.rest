@@ -1,6 +1,9 @@
-#################### Posts Api ####################
 ###
 GET http://localhost:3000
+
+######################################################
+#################### Posts Api #######################
+######################################################
 
 ###
 GET http://localhost:3000/posts
@@ -27,9 +30,35 @@ Content-Type: application/json
 }
 
 ###
-DELETE  http://localhost:3000/posts/2
+DELETE  http://localhost:3000/posts/1
 
+######################################################
 #################### Comments Api ####################
+######################################################
 
 ###
-GET http://localhost:3000/posts
+GET http://localhost:3000/comments
+
+###
+POST http://localhost:3000/comments
+Content-Type: application/json
+
+{
+    "postId" : 3,
+    "sender" : "Gabi",
+    "content" : "Some comment"
+}
+
+###
+PUT http://localhost:3000/comments/2
+Content-Type: application/json
+
+{
+    "content" : "Some other comment"
+}
+
+###
+DELETE  http://localhost:3000/comments/1
+
+###
+GET http://localhost:3000/comments/3
