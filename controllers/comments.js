@@ -1,5 +1,6 @@
 const Comment = require('../models/comments');
 
+// Get all comments
 const getAllComments = async (req, res) => {
     const postId = req.query.postId;
     try {
@@ -15,6 +16,18 @@ const getAllComments = async (req, res) => {
     }
 };
 
+// Get all comments for a specific post
+const getCommentsByPostId = async (req, res) => {
+    const { postId } = req.params;
+    try {
+        const comments = await Comment.find({ postId });
+        res.status(200).send(comments);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+};
+
+// Create new comment
 const createNewComment = async (req, res) => {
     const { postId, sender, content } = req.body;
     try {
@@ -29,6 +42,29 @@ const createNewComment = async (req, res) => {
     }
 };
 
+// Update a comment
+const updateComment = async (req, res) => {
+    const { commentId } = req.params;
+    const { content } = req.body;
+
+    try {
+        const updatedComment = await Comment.findOneAndUpdate(
+            { commentId },
+            { content },
+            { new: true }
+        );
+
+        if (!updatedComment) {
+            return res.status(404).send(`Comment with commentId ${commentId} not found.`);
+        }
+
+        res.status(200).send(updatedComment);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+};
+
+// Delete a comment
 const deleteComment = async (req, res) => {
     const commentId = req.params.id;
     try {
@@ -45,5 +81,7 @@ const deleteComment = async (req, res) => {
 module.exports = {
     getAllComments,
     createNewComment,
-    deleteComment
+    deleteComment,
+    getCommentsByPostId,
+    updateComment
 };

@@ -1,15 +1,15 @@
 #################### Posts Api ####################
 ###
-GET http://localhost:5000
+GET http://localhost:3000
 
 ###
-GET http://localhost:5000/posts
+GET http://localhost:3000/posts
 
 ###
-GET http://localhost:5000/posts?sender=Gal
+GET http://localhost:3000/posts?sender=Gal
 
 ###
-POST http://localhost:5000/posts
+POST http://localhost:3000/posts
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:5000/posts/1
+PUT http://localhost:3000/posts/1
 Content-Type: application/json
 
 {
@@ -27,6 +27,9 @@ Content-Type: application/json
 }
 
 ###
-DELETE  http://localhost:5000/posts/2
+DELETE  http://localhost:3000/posts/2
 
 #################### Comments Api ####################
+
+###
+GET http://localhost:3000/posts
