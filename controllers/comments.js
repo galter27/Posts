@@ -3,15 +3,10 @@ const Post = require('../models/posts');
 
 // Get all comments
 const getAllComments = async (req, res) => {
-    const postId = req.query.postId;
+
     try {
-        if (postId) {
-            const comments = await Comment.find({ postId });
-            res.status(200).send(comments);
-        } else {
-            const comments = await Comment.find();
-            res.status(200).send(comments);
-        }
+        const comments = await Comment.find({ postId });
+        res.status(200).send(comments);
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -46,7 +41,7 @@ const createNewComment = async (req, res) => {
         // Create the new comment
         const newComment = new Comment({ postId, sender, content, commentId: nextCommentId });
         await newComment.save();
-        
+
         res.status(201).send(newComment);
     } catch (error) {
         res.status(400).send(error.message);
