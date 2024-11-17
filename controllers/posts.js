@@ -1,6 +1,6 @@
 const Post = require('../models/posts');
 
-
+// Get all posts
 const getAllPosts = async (req, res) => {
     const sender = req.query.sender;
     try {
@@ -16,6 +16,7 @@ const getAllPosts = async (req, res) => {
     }
 };
 
+// Create a new post
 const createNewPost = async (req, res) => {
     const post = req.body;
     try {
@@ -31,8 +32,9 @@ const createNewPost = async (req, res) => {
     }
 };
 
+// Delete a post
 const deletePost = async (req, res) => {
-    const postId = req.params.id;
+    const postId = req.params.postId;
     try {
         const result = await Post.deleteOne({ postId: postId });
         if (result.deletedCount === 0) {
@@ -44,8 +46,9 @@ const deletePost = async (req, res) => {
     }
 };
 
+// Get post by id
 const getPostByid = async (req, res) => {
-    const postId = req.params.id;
+    const postId = req.params.postId;
     try {
         const postById = await Post.findById(postId);
         res.status(200).send(postById);
@@ -54,8 +57,9 @@ const getPostByid = async (req, res) => {
     }
 };
 
+// Update a post
 const updatePost = async (req, res) => {
-    const postId = req.params.id;
+    const postId = req.params.postId;
     const newContent = req.body.content;
 
     try {

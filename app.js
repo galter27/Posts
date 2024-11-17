@@ -13,6 +13,7 @@ mongodbConnection.once("open", () => console.log("Successfully Connected to Data
 
 // Require Routes
 const postRoutes = require('./routes/posts');
+const commentRoutes = require('./routes/comments');
 
 
 // App configuration
@@ -22,10 +23,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.send('Authors: Gabi Matatov 322404088 & Gal Ternovski')
+    res.send('Authors: Gabi Matatov 322404088 & Gal Ternovsky 323005512')
 })
 
 app.use("/posts", postRoutes);
+app.use("/comments", commentRoutes);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
