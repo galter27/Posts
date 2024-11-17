@@ -7,7 +7,9 @@ const commentController = require('../controllers/comments');
 // Define the routes
 router.get('/', commentController.getAllComments);
 
-router.get('/:postId', commentController.getCommentsByPostId);
+router.get('/:id', commentController.getCommentById);
+
+router.get('/post/:postId', commentController.getCommentsByPostId);
 
 router.post('/', commentController.createNewComment);
 

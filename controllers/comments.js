@@ -3,14 +3,20 @@ const Post = require('../models/posts');
 
 // Get all comments
 const getAllComments = async (req, res) => {
-
     try {
-        const comments = await Comment.find({ postId });
+        const comments = await Comment.find();
+        
+        // If no comments are found, return a 404 error
+        if (comments.length === 0) {
+            return res.status(404).send('No comments found.');
+        }
+
         res.status(200).send(comments);
     } catch (error) {
         res.status(400).send(error.message);
     }
 };
+
 
 // Get all comments for a specific post
 const getCommentsByPostId = async (req, res) => {
@@ -85,10 +91,33 @@ const deleteComment = async (req, res) => {
     }
 };
 
+// Get comment by ID
+const getCommentById = async (req, res) => {
+    const commentId = req.params.id;
+
+    try {
+        // Find the comment by its commentId
+        const comment = await Comment.findOne({ commentId });
+
+        if (!comment) {
+            // If comment not found, return a 404 status
+            return res.status(404).send(`Comment with commentId ${commentId} not found.`);
+        }
+
+        // Send the found comment in the response
+        res.status(200).send(comment);
+    } catch (error) {
+        // Handle any errors that occur
+        res.status(400).send(error.message);
+    }
+};
+
+
 module.exports = {
     getAllComments,
     createNewComment,
     deleteComment,
     getCommentsByPostId,
-    updateComment
+    updateComment,
+    getCommentById
 };
