@@ -1,17 +1,17 @@
-###
+### Get base URL
 GET http://localhost:3000
 
 ######################################################
 #################### Posts Api #######################
 ######################################################
 
-###
+### Get all posts
 GET http://localhost:3000/posts
 
-###
+### Get posts by sender
 GET http://localhost:3000/posts?sender=Gal
 
-###
+### Create a post
 POST http://localhost:3000/posts
 Content-Type: application/json
 
@@ -21,7 +21,7 @@ Content-Type: application/json
     "content" : "Hello World, This is My First Post"
 }
 
-###
+### Update a post
 PUT http://localhost:3000/posts/1
 Content-Type: application/json
 
@@ -29,17 +29,23 @@ Content-Type: application/json
     "content" : "Hello World, This is My Updated Post"
 }
 
-###
+### Delete a post
 DELETE  http://localhost:3000/posts/1
 
 ######################################################
 #################### Comments Api ####################
 ######################################################
 
-###
+### Get all posts
 GET http://localhost:3000/comments
 
-###
+### Get comment by commentId
+GET http://localhost:3000/comments/204
+
+### Get comments by postId
+GET http://localhost:3000/comments/post/3
+
+### Create a comment on post
 POST http://localhost:3000/comments
 Content-Type: application/json
 
@@ -49,7 +55,7 @@ Content-Type: application/json
     "content" : "Some comment"
 }
 
-###
+### Update a comment
 PUT http://localhost:3000/comments/2
 Content-Type: application/json
 
@@ -57,8 +63,6 @@ Content-Type: application/json
     "content" : "Some other comment"
 }
 
-###
+### Delete a comment
 DELETE  http://localhost:3000/comments/1
 
-###
-GET http://localhost:3000/comments/3
