@@ -11,7 +11,7 @@ GET http://localhost:3000/posts
 ### Get posts by sender
 GET http://localhost:3000/posts?sender=Gal
 
-### Create a post
+### Create a post (postId field will be added automatically)
 POST http://localhost:3000/posts
 Content-Type: application/json
 
@@ -21,7 +21,7 @@ Content-Type: application/json
     "content" : "Hello World, This is My First Post"
 }
 
-### Update a post
+### Update a post by postId
 PUT http://localhost:3000/posts/1
 Content-Type: application/json
 
@@ -29,14 +29,14 @@ Content-Type: application/json
     "content" : "Hello World, This is My Updated Post"
 }
 
-### Delete a post
+### Delete a post by postId 
 DELETE  http://localhost:3000/posts/1
 
 ######################################################
 #################### Comments Api ####################
 ######################################################
 
-### Get all posts
+### Get all comments
 GET http://localhost:3000/comments
 
 ### Get comment by commentId
@@ -55,7 +55,7 @@ Content-Type: application/json
     "content" : "Some comment"
 }
 
-### Update a comment
+### Update a comment by commentId
 PUT http://localhost:3000/comments/2
 Content-Type: application/json
 
@@ -63,6 +63,6 @@ Content-Type: application/json
     "content" : "Some other comment"
 }
 
-### Delete a comment
+### Delete a comment by commentId
 DELETE  http://localhost:3000/comments/1
 
